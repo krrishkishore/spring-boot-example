@@ -11,9 +11,10 @@ apply plugin: com.bmuschko.gradle.docker.DockerRemoteApiPlugin
 
 import com.bmuschko.gradle.docker.tasks.image.*
 
-def gitCommitHash = 'git rev-parse --verify --short HEAD'.execute().text.trim()
+def gitCommitHash = 'git rev-parse --verify HEAD'.execute().text.trim()
 
 task buildMyAppImage(type: DockerBuildImage) {
+    dependsOn build
     inputDir = file('./')
-    images.add("spring-boot-example:${gitCommitHash}")
+    images.add("${project.bootJar.baseName}:${gitCommitHash}")
 }
