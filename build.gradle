@@ -16,7 +16,7 @@ apply plugin: 'application'
 
 mainClassName = 'hello.Application'
 bootJar {
-    baseName = 'spring-boot-example'
+    baseName = 'spring-boot-docker'
     version =  '0.1.0'
 }
 
